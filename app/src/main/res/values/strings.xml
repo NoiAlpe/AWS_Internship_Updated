@@ -9,6 +9,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="terms">"By Continuing, you agree to our &#10; <b>Terms of Service and Privacy Policy</b>"</string>
+    <string name="terms">"By Continuing, you agree to our &#10; <a href="https://www.google.com" ><b> <font fgcolor="#2D82B5">Terms of Service and Privacy Policy</font> </b></a>"</string>
     <string name="version"> v.1.0 </string>
 </resources>
