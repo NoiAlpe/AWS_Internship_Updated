@@ -16,6 +16,7 @@
     <string name="resend_otp">Not received yet? <a href="https://www.google.com"><b> <font fgcolor="#2D82B5">Resend</font> </b></a></string>
     <string name="signup_profile_details_title">PROFILE DETAILS</string>
     <string name="signup_profile_details_description">What\'s your name?</string>
+    <string name="signup_profile_details_add_avatar_description">Upload your avatar</string>
 
     //Login Credentials Page
     <string name="login_title">WELCOME BACK</string>

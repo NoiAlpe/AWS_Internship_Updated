@@ -22,6 +22,7 @@ class EmailOTP : AppCompatActivity() {
         binding.btnProceed.setOnClickListener {
             val intent = Intent(this@EmailOTP, ProfileDetails::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
