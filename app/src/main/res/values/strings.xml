@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AWS_Internship</string>
+
+    //Get Started Page
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -11,4 +13,7 @@
     <string name="login_failed">"Login failed"</string>
     <string name="terms">"By Continuing, you agree to our &#10; <a href="https://www.google.com" ><b> <font fgcolor="#2D82B5">Terms of Service and Privacy Policy</font> </b></a>"</string>
     <string name="version"> v.1.0 </string>
+
+    //SignUp Page
+    <string name="signup01_email_prompt">Enter your email to sign into your account. If you dont have one, we will create one for you.</string>
 </resources>
