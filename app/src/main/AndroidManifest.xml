@@ -13,21 +13,7 @@
         android:theme="@style/Theme.AWS_Internship"
         tools:targetApi="31">
         <activity
-            android:name=".ForgotPassword02"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ForgotPassword01"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".LoginCredentials"
+            android:name=".ProfileDetails"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

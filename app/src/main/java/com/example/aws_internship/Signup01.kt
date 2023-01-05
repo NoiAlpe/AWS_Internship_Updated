@@ -19,8 +19,7 @@ class Signup01 : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-
-        binding.btnGetStarted.setOnClickListener{
+        binding.btnProceed.setOnClickListener{
 
             if (binding.tiEmail.text.toString() != email) {
                 val intent = Intent(this@Signup01, SignUp::class.java)
