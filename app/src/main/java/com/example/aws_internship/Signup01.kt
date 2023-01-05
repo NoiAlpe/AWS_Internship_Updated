@@ -28,6 +28,8 @@ class Signup01 : AppCompatActivity() {
 
             else {
                 Toast.makeText(this,"Account Exists, Going to Log-in page",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@Signup01, LoginCredentials::class.java)
+                startActivity(intent)
             }
         }
 
