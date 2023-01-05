@@ -15,4 +15,14 @@
     <string name="signup_verify_email_title">VERIFY EMAIL</string>
     <string name="resend_otp">Not received yet? <a href="https://www.google.com"><b> <font fgcolor="#2D82B5">Resend</font> </b></a></string>
 
+    //Login Credentials Page
+    <string name="login_title">WELCOME BACK</string>
+    <string name="login_description">Enter password to log into</string>
+    <string name="login_forgot_password"><a href="https://www.google.com"><b> <font fgcolor="#2D82B5">Forgot Password</font></b></a></string>
+
+    //Forgot Password Page
+    <string name="forgot_pass_title">NEW PASSWORD</string>
+    <string name="forgot_pass_description">Type in the new password for</string>
+    <string name="forgot_pass_button">Confirm New Password</string>
+
 </resources>
