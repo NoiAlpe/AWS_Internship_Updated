@@ -27,5 +27,8 @@
     <string name="forgot_pass_title">NEW PASSWORD</string>
     <string name="forgot_pass_description">Type in the new password for</string>
     <string name="forgot_pass_button">Confirm New Password</string>
+    <string name="forgot_pass_reset">RESET PASSWORD</string>
+    <string name="forgot_pass_reset_description">Enter the code sent to</string>
+
 
 </resources>
