@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aws_internship.databinding.ActivityEmailOtpBinding
-import com.example.aws_internship.databinding.ActivitySignUpBinding
 
 class EmailOTP : AppCompatActivity() {
 
