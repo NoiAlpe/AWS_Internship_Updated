@@ -26,7 +26,15 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                Toast.makeText(this@SignUp, "${if (passwordValidationAlphaNumeric(binding.tiPassword.text.toString())) "" else "Password should be Alpha Numeric" } ${if (passwordValidationCharLength(binding.tiPassword.toString())) "and should be 6 digits" else ""}", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@SignUp, "${if (passwordValidationAlphaNumeric(binding.tiPassword.text.toString())) "" else "Password should be Alpha Numeric" } ${if (passwordValidationCharLength(binding.tiPassword.toString())) "and should be 6 digits" else ""}", Toast.LENGTH_SHORT).show()
+
+                if (!passwordValidationCharLength(binding.tiPassword.text.toString())) {
+//                    binding.tilPassword.helperText = "Password should be at least 6 characters"
+                }
+
+                if (!passwordValidationAlphaNumeric(binding.tiPassword.text.toString())) {
+//                    binding.tilPassword.helperText = binding.tilPassword.helperText.toString() + "\n Password should be at least have one number"
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -39,11 +47,11 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "password dont match" else "password matches", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "password dont match" else "password matches", Toast.LENGTH_SHORT).show()
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "" else "password matches", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "" else "password matches", Toast.LENGTH_SHORT).show()
             }
 
         })

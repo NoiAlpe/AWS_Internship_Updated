@@ -64,10 +64,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        app:helperText="This field is required"
+        app:helperTextTextColor="@android:color/holo_red_light"
+        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -79,7 +82,7 @@
             android:id="@+id/tiPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/password"
+            android:hint="Password"
             android:inputType="textPassword" />
 
 
@@ -87,10 +90,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilRetypePassword"
-        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -102,7 +106,7 @@
             android:id="@+id/tiRetypePassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/retype_password"
+            android:hint="Retype Password"
             android:inputType="textPassword" />
 
 
