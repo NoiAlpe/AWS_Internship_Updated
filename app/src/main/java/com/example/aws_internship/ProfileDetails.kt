@@ -23,4 +23,8 @@ class ProfileDetails : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onBackPressed() {
+        // Do nothing
+    }
 }

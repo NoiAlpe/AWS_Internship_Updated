@@ -29,6 +29,8 @@
     <string name="forgot_pass_button">Confirm New Password</string>
     <string name="forgot_pass_reset">RESET PASSWORD</string>
     <string name="forgot_pass_reset_description">Enter the code sent to</string>
+    <string name="password">Password</string>
+    <string name="retype_password">Retype Password</string>
 
 
 </resources>

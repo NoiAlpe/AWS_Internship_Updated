@@ -26,6 +26,7 @@ class GetStarted : AppCompatActivity(){
         binding.btnGetStarted.setOnClickListener {
             val intent = Intent(this@GetStarted, Signup01::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
