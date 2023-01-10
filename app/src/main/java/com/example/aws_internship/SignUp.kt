@@ -86,7 +86,7 @@ class SignUp : AppCompatActivity() {
 
         return if (password == passwordRetype) {
             "Password Matches"
-        } else if (passwordRetype.length > 1) {
+        } else if (passwordRetype.isNotEmpty()) {
             "Password doesn't match"
         } else if (passwordRetype.isEmpty()) {
             "This field is required"
