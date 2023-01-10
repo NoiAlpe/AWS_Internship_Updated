@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import com.example.aws_internship.databinding.ActivitySignUpBinding
 import com.example.aws_internship.databinding.ActivitySignup01Binding
@@ -26,18 +27,15 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                Toast.makeText(this@SignUp, "${if (passwordValidationAlphaNumeric(binding.tiPassword.text.toString())) "" else "Password should be Alpha Numeric" } ${if (passwordValidationCharLength(binding.tiPassword.toString())) "and should be 6 digits" else ""}", Toast.LENGTH_SHORT).show()
-
-                if (!passwordValidationCharLength(binding.tiPassword.text.toString())) {
-//                    binding.tilPassword.helperText = "Password should be at least 6 characters"
+                binding.tilPassword.helperText = passwordValidation(binding.tiPassword.text.toString())
+                if (binding.tiRetypePassword.text.toString().isNotEmpty()) {
+                    binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
                 }
 
-                if (!passwordValidationAlphaNumeric(binding.tiPassword.text.toString())) {
-//                    binding.tilPassword.helperText = binding.tilPassword.helperText.toString() + "\n Password should be at least have one number"
-                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
+                binding.tilPassword.helperText = passwordValidation(binding.tiPassword.text.toString())
             }
 
         })
@@ -47,11 +45,11 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "password dont match" else "password matches", Toast.LENGTH_SHORT).show()
+                binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
             }
 
             override fun afterTextChanged(p0: Editable?) {
-//                Toast.makeText(this@SignUp, if (!binding.tiRetypePassword.text.toString().equals(binding.tiPassword.text.toString())) "" else "password matches", Toast.LENGTH_SHORT).show()
+                binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
             }
 
         })
@@ -68,7 +66,38 @@ class SignUp : AppCompatActivity() {
 
     }
 
-    private fun passwordValidationCharLength (password : String) : Boolean = password.length >= 6
-    private fun passwordValidationAlphaNumeric (password: String) : Boolean = password.matches("[A-Za-z0-9]".toRegex())
+
+    private fun passwordValidation(password: String) : String? {
+        return if (passwordValidationNumeric(password) && passwordValidationCharLength(password) && passwordValidationAlpha(password)){
+            "Minimum 6 Alphanumeric Characters"
+        } else if (passwordValidationNumeric(password)){
+            "At least 1 number is required"
+        } else if (passwordValidationAlpha(password)){
+            "At least 1 letter is required"
+        }else if (passwordValidationCharLength(password)){
+            "Minimum 6 Characters"
+        } else null
+
+    }
+
+    private fun passwordMatch(password: String, passwordRetype: String) : String? {
+
+        Log.i("SIGN UP","PASSWORD: $password, PASSWORD RETYPE: $passwordRetype")
+
+        return if (password == passwordRetype) {
+            "Password Matches"
+        } else if (passwordRetype.length > 1) {
+            "Password doesn't match"
+        } else if (passwordRetype.isEmpty()) {
+            "This field is required"
+        } else {
+            null
+        }
+
+    }
+
+    private fun passwordValidationCharLength (password : String) : Boolean = password.length < 6
+    private fun passwordValidationNumeric (password: String) : Boolean = !password.contains("[0-9]".toRegex())
+    private fun passwordValidationAlpha (password: String) : Boolean = !password.contains("[A-Za-z]".toRegex())
 
 }

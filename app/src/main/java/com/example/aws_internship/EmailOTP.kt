@@ -67,6 +67,8 @@ class EmailOTP : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (binding.tiOPP1.text.toString().length == 1) {
                     binding.tiOPP2.requestFocus()
+                } else {
+                    binding.tiOPP0.requestFocus()
                 }
             }
 
@@ -84,6 +86,8 @@ class EmailOTP : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (binding.tiOPP2.text.toString().length == 1) {
                     binding.tiOPP3.requestFocus()
+                } else {
+                    binding.tiOPP1.requestFocus()
                 }
             }
 
@@ -100,6 +104,8 @@ class EmailOTP : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (binding.tiOPP3.text.toString().length == 1) {
                     binding.tiOPP4.requestFocus()
+                } else {
+                    binding.tiOPP2.requestFocus()
                 }
             }
 
@@ -116,6 +122,25 @@ class EmailOTP : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (binding.tiOPP4.text.toString().length == 1) {
                     binding.tiOPP5.requestFocus()
+                } else {
+                    binding.tiOPP3.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+
+        binding.tiOPP5.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (binding.tiOPP5.text.toString().isEmpty()) {
+                    binding.tiOPP4.requestFocus()
                 }
             }
 
