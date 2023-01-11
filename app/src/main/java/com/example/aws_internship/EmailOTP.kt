@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.aws_internship.databinding.ActivityEmailOtpBinding
 
@@ -43,10 +44,11 @@ class EmailOTP : AppCompatActivity() {
 
 
                 val intent = Intent(this@EmailOTP, ProfileDetails::class.java)
+                binding.ivHelperText.isVisible = false
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this@EmailOTP,"OTP Did Not Match", Toast.LENGTH_SHORT).show()
+                binding.ivHelperText.isVisible = true
             }
 
         }

@@ -27,15 +27,31 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.tilPassword.helperText = passwordValidation(binding.tiPassword.text.toString())
+                val error = passwordValidation(binding.tiPassword.text.toString())
+
+                if (error != null){
+                    binding.tilPassword.error = error
+                } else {
+                    binding.tilPassword.error = null
+                }
+
                 if (binding.tiRetypePassword.text.toString().isNotEmpty()) {
-                    binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+
+                    val errorText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+
+                    if (errorText == "Password Matches"){
+                        binding.tilRetypePassword.error = null
+                        binding.tilRetypePassword.helperText = errorText
+                        binding.tilPassword.helperText = errorText
+                    } else {
+                        binding.tilRetypePassword.error = errorText
+                    }
                 }
 
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                binding.tilPassword.helperText = passwordValidation(binding.tiPassword.text.toString())
+//                binding.tilPassword.helperText = passwordValidation(binding.tiPassword.text.toString())
             }
 
         })
@@ -45,18 +61,36 @@ class SignUp : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+                val error = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+
+                if (error == "Password Matches"){
+                    binding.tilRetypePassword.error = null
+                    binding.tilRetypePassword.helperText = error
+                    binding.tilPassword.helperText = error
+                } else {
+                    binding.tilRetypePassword.error = error
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                binding.tilRetypePassword.helperText = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+                val error = passwordMatch(binding.tiPassword.text.toString(), binding.tiRetypePassword.text.toString())
+
+                if (error == "Password Matches"){
+                    binding.tilRetypePassword.error = null
+                    binding.tilRetypePassword.helperText = error
+                } else {
+                    binding.tilRetypePassword.error = error
+                }
             }
 
         })
 
         binding.btnProceed.setOnClickListener {
-            val intent = Intent(this@SignUp, EmailOTP::class.java)
-            startActivity(intent)
+            if (passwordMatch(binding.tiPassword.text.toString(),binding.tiRetypePassword.text.toString()) == "Password Matches"){
+                val intent = Intent(this@SignUp, EmailOTP::class.java)
+                startActivity(intent)
+            }
         }
 
         binding.ibBackButton.setOnClickListener {
@@ -68,7 +102,7 @@ class SignUp : AppCompatActivity() {
 
 
     private fun passwordValidation(password: String) : String? {
-        return if (passwordValidationNumeric(password) && passwordValidationCharLength(password) && passwordValidationAlpha(password)){
+        return if (passwordValidationNumeric(password) && (passwordValidationCharLength(password) || passwordValidationAlpha(password))){
             "Minimum 6 Alphanumeric Characters"
         } else if (passwordValidationNumeric(password)){
             "At least 1 number is required"

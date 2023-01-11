@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#2D82B5</color>
     <color name="gray">#222222</color>
+    <color name="error">@android:color/holo_red_light</color>
+    <color name="accepted">@android:color/holo_green_dark</color>
 
 </resources>
