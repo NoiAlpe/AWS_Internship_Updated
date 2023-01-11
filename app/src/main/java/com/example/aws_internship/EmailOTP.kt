@@ -1,6 +1,7 @@
 package com.example.aws_internship
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -33,6 +34,14 @@ class EmailOTP : AppCompatActivity() {
                         + binding.tiOPP5.text.toString())
             ) {
                 Toast.makeText(this@EmailOTP,"OTP Accepted", Toast.LENGTH_SHORT).show()
+
+                val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
+                var editor = sharedPreferences.edit()
+
+                editor.putBoolean("hasLoggedIn",true)
+                editor.commit()
+
+
                 val intent = Intent(this@EmailOTP, ProfileDetails::class.java)
                 startActivity(intent)
                 finish()
