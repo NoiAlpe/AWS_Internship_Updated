@@ -90,6 +90,14 @@ class ForgotPassword02 : AppCompatActivity() {
             if (binding.tiPassword.text.toString().isNotEmpty()){
                 if (binding.tiRetypePassword.text.toString().isNotEmpty()){
                     if (passwordMatch(binding.tiPassword.text.toString(),binding.tiRetypePassword.text.toString()) == "Password Matches"){
+                        val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
+                        var editor = sharedPreferences.edit()
+
+                        editor.putBoolean("hasLoggedIn",false)
+                        editor.putBoolean("hasLoggedInHome",false)
+                        editor.putBoolean("hasLoggedInHome2",true)
+                        editor.commit()
+
                         val intent = Intent(this@ForgotPassword02, HomePage::class.java)
                         startActivity(intent)
                     }

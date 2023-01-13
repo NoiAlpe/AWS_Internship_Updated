@@ -31,6 +31,14 @@ class LoginCredentials : AppCompatActivity() {
             if (match){
                 binding.tilPassword.helperText = null
                 binding.tilPassword.error = null
+                val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
+                var editor = sharedPreferences.edit()
+
+                editor.putBoolean("hasLoggedIn",false)
+                editor.putBoolean("hasLoggedInHome",false)
+                editor.putBoolean("hasLoggedInHome2",true)
+                editor.commit()
+
                 val intent = Intent(this@LoginCredentials, HomePage::class.java)
                 startActivity(intent)
             } else {

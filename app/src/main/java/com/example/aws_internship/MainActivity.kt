@@ -18,16 +18,21 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             val sharedPreferences = getSharedPreferences(preferenceName, 0)
             val hasLoggedIn : Boolean = sharedPreferences.getBoolean("hasLoggedIn",false)
-//            val hasLoggedInHome : Boolean = sharedPreferences.getBoolean("hasLoggedInHome",false)
+            val hasLoggedInHome : Boolean = sharedPreferences.getBoolean("hasLoggedInHome",false)
+            val hasLoggedInHome2 : Boolean = sharedPreferences.getBoolean("hasLoggedInHome2",false)
 
             if (hasLoggedIn){
                 val intent = Intent(this@MainActivity,ProfileDetails::class.java)
                 startActivity(intent)
                 finish()
-//            } else if (hasLoggedInHome) {
-//                val intent = Intent(this@MainActivity, HomePage::class.java)
-//                startActivity(intent)
-//                finish()
+            } else if (hasLoggedInHome) {
+                val intent = Intent(this@MainActivity, HomePage::class.java)
+                startActivity(intent)
+                finish()
+            } else if (hasLoggedInHome2) {
+                val intent = Intent(this@MainActivity, HomePage::class.java)
+                startActivity(intent)
+                finish()
             } else{
                 val intent = Intent(this@MainActivity, GetStarted::class.java)
                 startActivity(intent)
