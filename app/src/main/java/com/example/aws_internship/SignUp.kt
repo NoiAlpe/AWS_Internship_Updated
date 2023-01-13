@@ -69,6 +69,7 @@ class SignUp : AppCompatActivity() {
                     binding.tilPassword.helperText = error
                 } else {
                     binding.tilRetypePassword.error = error
+                    binding.tilPassword.helperText = null
                 }
 
             }
@@ -81,21 +82,29 @@ class SignUp : AppCompatActivity() {
                     binding.tilRetypePassword.helperText = error
                 } else {
                     binding.tilRetypePassword.error = error
+                    binding.tilPassword.helperText = null
                 }
             }
 
         })
 
         binding.btnProceed.setOnClickListener {
-            if (passwordMatch(binding.tiPassword.text.toString(),binding.tiRetypePassword.text.toString()) == "Password Matches"){
-                val intent = Intent(this@SignUp, EmailOTP::class.java)
-                startActivity(intent)
+            if (binding.tiPassword.text.toString().isNotEmpty()){
+                if (binding.tiRetypePassword.text.toString().isNotEmpty()){
+                    if (passwordMatch(binding.tiPassword.text.toString(),binding.tiRetypePassword.text.toString()) == "Password Matches"){
+                        val intent = Intent(this@SignUp, EmailOTP::class.java)
+                        startActivity(intent)
+                    }
+                } else{
+                    binding.tilRetypePassword.error = "This field is required"
+                }
+            } else{
+                binding.tilPassword.error = "This field is required"
             }
         }
 
         binding.ibBackButton.setOnClickListener {
-            val intent = Intent (this@SignUp, Signup01::class.java)
-            startActivity(intent)
+            super.onBackPressed()
         }
 
     }

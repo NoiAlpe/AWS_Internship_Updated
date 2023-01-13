@@ -29,8 +29,7 @@ class AddAvatar : AppCompatActivity() {
         }
 
         binding.ibBackButton.setOnClickListener {
-            val intent = Intent(this@AddAvatar, ProfileDetails::class.java)
-            startActivity(intent)
+            super.onBackPressed()
         }
 
         binding.ibRemoveAvatar.setOnClickListener {
@@ -39,6 +38,12 @@ class AddAvatar : AppCompatActivity() {
         }
 
         binding.btnProceed.setOnClickListener{
+//            val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
+//            var editor = sharedPreferences.edit()
+//
+//            editor.putBoolean("hasLoggedInHome",true)
+//            editor.commit()
+
             val intent = Intent(this@AddAvatar, HomePage::class.java)
             startActivity(intent)
         }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:background="#fbfbfb"
-    android:padding="10dp"
+    android:padding="20dp"
     tools:context=".GetStarted">
 
 
@@ -14,11 +14,9 @@
         android:id="@+id/ivLogo"
         android:layout_width="86dp"
         android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/aws_logo" />
 
     <TextView
@@ -41,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
+        android:layout_marginBottom="132dp"
         app:helperText="@string/HelperText"
         app:helperTextTextColor="@android:color/holo_red_light"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,9 +53,9 @@
             android:id="@+id/tiEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hint="@string/email"
             android:inputType="text"
-            android:maxLines="1"
-            android:hint="@string/email" />
+            android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

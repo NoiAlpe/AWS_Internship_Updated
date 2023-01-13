@@ -1,11 +1,9 @@
 package com.example.aws_internship
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,11 +18,16 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             val sharedPreferences = getSharedPreferences(preferenceName, 0)
             val hasLoggedIn : Boolean = sharedPreferences.getBoolean("hasLoggedIn",false)
+//            val hasLoggedInHome : Boolean = sharedPreferences.getBoolean("hasLoggedInHome",false)
 
             if (hasLoggedIn){
-                val intent = Intent(this@MainActivity, ProfileDetails::class.java)
+                val intent = Intent(this@MainActivity,ProfileDetails::class.java)
                 startActivity(intent)
                 finish()
+//            } else if (hasLoggedInHome) {
+//                val intent = Intent(this@MainActivity, HomePage::class.java)
+//                startActivity(intent)
+//                finish()
             } else{
                 val intent = Intent(this@MainActivity, GetStarted::class.java)
                 startActivity(intent)

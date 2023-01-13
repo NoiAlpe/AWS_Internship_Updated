@@ -32,12 +32,12 @@ class ForgotPassword01 : AppCompatActivity() {
             ) {
                 Toast.makeText(this@ForgotPassword01,"OTP Accepted", Toast.LENGTH_SHORT).show()
 
-                val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
-                var editor = sharedPreferences.edit()
-
-                editor.putBoolean("hasLoggedIn",true)
-                editor.commit()
-
+                //TODO: For user who discontinued onboarding, return to last page
+//                val sharedPreferences = getSharedPreferences(MainActivity().preferenceName, 0)
+//                var editor = sharedPreferences.edit()
+//
+//                editor.putBoolean("hasLoggedIn",true)
+//                editor.commit()
 
                 val intent = Intent(this@ForgotPassword01, ForgotPassword02::class.java)
                 binding.ivHelperText.isVisible = false
@@ -158,8 +158,7 @@ class ForgotPassword01 : AppCompatActivity() {
         })
 
         binding.ibBackButton.setOnClickListener {
-            val intent = Intent (this@ForgotPassword01, LoginCredentials::class.java)
-            startActivity(intent)
+            super.onBackPressed()
         }
     }
 }

@@ -1,20 +1,19 @@
 package com.example.aws_internship
 
+import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import com.example.aws_internship.databinding.ActivityEmailOtpBinding
 
 class EmailOTP : AppCompatActivity() {
 
     private lateinit var binding: ActivityEmailOtpBinding
-    private var temporaryOTP: String = "012345"
+    private val temporaryOTP: String = "012345"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -162,8 +161,7 @@ class EmailOTP : AppCompatActivity() {
         })
 
         binding.ibBackButton.setOnClickListener {
-            val intent = Intent (this@EmailOTP, SignUp::class.java)
-            startActivity(intent)
+            super.onBackPressed()
         }
     }
 }
