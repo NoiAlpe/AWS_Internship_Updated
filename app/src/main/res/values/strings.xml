@@ -33,5 +33,12 @@
     <string name="HelperText">Required</string>
     <string name="email">Email</string>
 
+    //Settings
+    <string name="setting_heading">PROFILE</string>
+    <string name="setting_name">Fname Lname</string>
+    <string name="setting_personal_information">Personal Information</string>
+    <string name="setting_account_setting">Account Settings</string>
+    <string name="setting_about">About</string>
+
 
 </resources>

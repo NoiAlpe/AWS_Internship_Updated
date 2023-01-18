@@ -7,7 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#2D82B5</color>
+    <color name="blue_primary">#2D82B5</color>
+    <color name="blue_secondary">#53A6D8</color>
+    <color name="blue_tertiary">#88CDF6</color>
     <color name="gray">#222222</color>
     <color name="error">@android:color/holo_red_light</color>
     <color name="accepted">@android:color/holo_green_dark</color>

@@ -1,20 +1,28 @@
 package com.example.aws_internship
 
+import android.Manifest
+import android.R.attr.data
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.View
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.example.aws_internship.databinding.ActivityAddAvatarBinding
-import com.example.aws_internship.databinding.ActivityEmailOtpBinding
-import com.example.aws_internship.databinding.ActivityProfileDetailsBinding
+
 
 class AddAvatar : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddAvatarBinding
-
-    companion object {
-        val image_request_code = 100
-    }
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
+    private var isReadPermissionGranted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +32,14 @@ class AddAvatar : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.ibAddAvatar.setOnClickListener {
-            pickImageGallery()
+        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){ permissions ->
+
+            isReadPermissionGranted = permissions[Manifest.permission.READ_EXTERNAL_STORAGE] ?: isReadPermissionGranted
         }
+
+        requestPermission()
+
+        pickImageGallery()
 
         binding.ibBackButton.setOnClickListener {
             super.onBackPressed()
@@ -51,17 +64,40 @@ class AddAvatar : AppCompatActivity() {
 
     }
 
-    private fun pickImageGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, image_request_code)
+    private fun requestPermission(){
+        isReadPermissionGranted = ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+
+        val permissionRequest : MutableList<String> = ArrayList()
+
+        if (!isReadPermissionGranted){
+            permissionRequest.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (permissionRequest.isNotEmpty()){
+            permissionLauncher.launch(permissionRequest.toTypedArray())
+        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == image_request_code && resultCode == RESULT_OK){
-            binding.imageView.setImageURI(data?.data)
-            binding.ibRemoveAvatar.isVisible = true
+    private fun pickImageGallery() {
+        val pickPhoto = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                binding.imageView.setImageURI(it)
+            }
+        )
+
+        binding.ibAddAvatar.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+
+                pickPhoto.launch("image/*")
+
+            } else {
+                Toast.makeText(this, "Read Permission is not granted", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

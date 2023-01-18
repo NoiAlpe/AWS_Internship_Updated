@@ -90,7 +90,7 @@
         android:layout_marginBottom="16dp"
         android:padding="20dp"
         android:text="Get Started"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/blue_primary"
         app:layout_constraintBottom_toTopOf="@+id/tvTermsAndCondition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
